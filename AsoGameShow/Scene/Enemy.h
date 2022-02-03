@@ -1,0 +1,38 @@
+#pragma once
+#include"Vector2d.h"
+#include "GameCommon.h"
+class GameScene;
+
+class Enemy
+{
+private:
+
+	GameScene* mParent;
+
+	int mImage[16];		//画像の格納領域
+	int mImage2[16];		//画像の格納領域
+	int mImage3[16];		//画像の格納領域
+	int mImage4[16];		//画像の格納領域
+
+	bool mPush;
+
+
+	DIR mMoveDir;		//キャラクターの向き
+	Vector2d mPos;		//キャラクターの地図上の座標
+	Vector2d mSizeOffset;//キャラクターのオフセットサイズ　　半分の値
+	Vector2d mSize;		//キャラクター画像のサイズ
+	int mMoveSpeed;		//キャラクター移動スピード
+	int mAnmCnt;		//キャラクターのアニメーション
+
+	int mCnt;
+public:
+	int mPosBottom;	//キャラクターの足元のY座標
+
+	bool init(GameScene* parent);		//初期化
+	Vector2d Update(void);		//更新
+	void Draw(void);		//描画
+	bool Release(void);		//開放
+	DIR GetDIR(void);
+
+};
+
