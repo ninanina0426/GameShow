@@ -27,8 +27,10 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
     mPlayer.Update();
 
     mEnemy.Update();
-    
-   
+    if (CheckSoundFile()!=1)
+    {
+        printf("なってないよ\n");
+    }
     return std::move(own);
 }
 
@@ -66,8 +68,8 @@ void GameScene::DrawOwnScn()
     mEnemy.Draw();
     //プレイヤーの描画
     mPlayer.Draw();
-    
- 
+
+    PlaySoundMem(BGM_, DX_PLAYTYPE_LOOP, true);
     SetDrawScreen(sceneScrID_);
     ClsDrawScreen();//画面消す
     //シーンの内容の描画を行う
@@ -98,7 +100,7 @@ bool GameScene::Init(void)
 
     mPlayer.init(this);
     mEnemy.init(this);
-    //BGM_ = LoadSoundMem("./music/Electric_Equipment_Connection.mp3");
+    BGM_ = LoadSoundMem("./music/Electric_Equipment_Connection.mp3");
 
     return true;
 }
