@@ -1,9 +1,0 @@
-#pragma once
-#include <list>
-#include "Vector2.h"
-
-
-using Collision = std::pair<Vector2Dbl, Vector2Dbl>;//ç∂è„âEâ∫
-using ColList = std::list<Collision>;
-
-
