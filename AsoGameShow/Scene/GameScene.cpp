@@ -21,12 +21,16 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
     {
         obj->Update(tmxobj_);
     }*/
-    PlaySoundMem(BGM_, DX_PLAYTYPE_LOOP);
+   
     DrawOwnScn();
     
     mPlayer.Update();
 
     mEnemy.Update();
+    if (CheckSoundFile()!=1)
+    {
+        printf("なってないよ\n");
+    }
     return std::move(own);
 }
 
@@ -60,19 +64,20 @@ void GameScene::DrawOwnScn()
     }*/
     DrawBox(0, 0, 640, 480, 0x000000, true);
     DrawGraph(0, 0, bg_, true);
-    /*for (const auto& obj : objList_)
-    {
-        obj->Draw();
-    }*/
+
+    mEnemy.Draw();
+    //プレイヤーの描画
+    mPlayer.Draw();
+
+    PlaySoundMem(BGM_, DX_PLAYTYPE_LOOP, true);
     SetDrawScreen(sceneScrID_);
     ClsDrawScreen();//画面消す
     //シーンの内容の描画を行う
     DrawBox(0, 0, 1080, 800, 0xffffff, true);
     DrawGraph(90, 10, gameScene_, true);
-    mEnemy.Draw();
-
-    //プレイヤーの描画
-    mPlayer.Draw();
+   
+    
+    
 }
 
 bool GameScene::Init(void)
@@ -85,8 +90,7 @@ bool GameScene::Init(void)
     //obj.obj_ = ObjType::P1;
     //obj2.obj_ = ObjType::P2;
     gameScene_ = MakeScreen(620, 480, 255);
-    BGM_=LoadSoundMem("./music/Electric_Equipment_Connection.mp3", DX_PLAYTYPE_LOOP);
-    //tmxobj_.LoadTMX("./tmx/map.tmx");
+     //tmxobj_.LoadTMX("./tmx/map.tmx");
     tmxobj_.LoadTMX("./tmx/test.tmx");
     bg_ = LoadGraph("./image/kannsei.png");
     /*objList_.emplace_back(std::make_unique<Player>(CntType::KEY));
@@ -96,5 +100,7 @@ bool GameScene::Init(void)
 
     mPlayer.init(this);
     mEnemy.init(this);
+    BGM_ = LoadSoundMem("./music/Electric_Equipment_Connection.mp3");
+
     return true;
 }
