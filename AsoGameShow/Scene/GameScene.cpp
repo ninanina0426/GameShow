@@ -15,6 +15,26 @@ GameScene::~GameScene()
 {
 }
 
+bool GameScene::IsEnemy1(void)
+{
+    return mEnemy.mEnemy1;
+}
+
+bool GameScene::IsEnemy2(void)
+{
+    return mEnemy.mEnemy2;
+}
+
+bool GameScene::IsEnemy3(void)
+{
+    return mEnemy.mEnemy3;
+}
+
+bool GameScene::IsEnemy4(void)
+{
+    return mEnemy.mEnemy4;
+}
+
 uniquBaseScn GameScene::Update( uniquBaseScn own)
 {
    /* for (const auto& obj : objList_)
@@ -22,11 +42,79 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
         obj->Update(tmxobj_);
     }*/
    
+    //“–‚½‚è”»’è----------------------------------------------------------------
+    Vector2d playerPos;
+    Vector2d enemyPos;
+    DIR GetDIR;
+    Vector2d enemySize;
+    Vector2d playerSize;
+
+    playerPos = mPlayer.Update();
+    enemyPos = mEnemy.Update();
+    enemySize = mEnemy.GetSize();
+    GetDIR = mPlayer.GetDIR();
+    playerSize = mPlayer.GetSiz();
+
+    if (mEnemy.mEnemy1)
+    {
+        if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_1+ enemySize.Y / 2) &&
+            (enemyPos.Y+ ENEMY_Y_1 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
+            (playerPos.X - playerSize.X / 2 < enemyPos.X+ ENEMY_X_1 + enemySize.X / 2) &&
+            (enemyPos.X+ ENEMY_X_1 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
+        {
+            if (CheckHitKey(KEY_INPUT_N))
+            {
+                mEnemy.mEnemy1 = false;
+            }
+        }
+
+    }
+    if (mEnemy.mEnemy2)
+    {
+        if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_2 + enemySize.Y / 2) &&
+            (enemyPos.Y + ENEMY_Y_2 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
+            (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_2 + enemySize.X / 2) &&
+            (enemyPos.X + ENEMY_X_2 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
+        {
+            if (CheckHitKey(KEY_INPUT_N))
+            {
+                mEnemy.mEnemy2 = false;
+            }
+        }
+
+    }
+    if (mEnemy.mEnemy3)
+    {
+        if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_3 + enemySize.Y / 2) &&
+            (enemyPos.Y + ENEMY_Y_3 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
+            (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_3 + enemySize.X / 2) &&
+            (enemyPos.X + ENEMY_X_3 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
+        {
+            if (CheckHitKey(KEY_INPUT_N))
+            {
+                mEnemy.mEnemy3 = false;
+            }
+        }
+
+    }
+    if (mEnemy.mEnemy4)
+    {
+        if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_4 + enemySize.Y / 2) &&
+            (enemyPos.Y + ENEMY_Y_4 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
+            (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_4 + enemySize.X / 2) &&
+            (enemyPos.X + ENEMY_X_4 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
+        {
+            if (CheckHitKey(KEY_INPUT_N))
+            {
+                mEnemy.mEnemy4 = false;
+            }
+        }
+
+    }
+    //---------------------------------------------------------------------------
+
     DrawOwnScn();
     
-    mPlayer.Update();
-
-    mEnemy.Update();
     if (CheckSoundFile()!=1)
     {
         printf("‚È‚Á‚Ä‚È‚¢‚æ\n");
