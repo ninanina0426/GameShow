@@ -26,6 +26,9 @@ bool Enemy::init(GameScene* parent)
 	mEnemy4 = true;
 
 	mPush = false;
+	mPush2 = false;
+	mPush3 = false;
+	mPush4 = false;
 	mAnmCnt = 0;
 	mCnt = 0;
 	SetTransColor(255, 0, 255);
@@ -48,27 +51,79 @@ bool Enemy::init(GameScene* parent)
 		return false;
 	}
 	//false-------------------------------------------------
-	/*if (LoadDivGraph("image/ded1.png", 16, 4, 4, PLAYER_SIZE_X, PLAYER_SIZE_Y, &mImage[0]) == -1)
+	if (LoadDivGraph("image/ded1.png", 16, 4, 4, PLAYER_SIZE_X, PLAYER_SIZE_Y, &mDedImage[0]) == -1)
 	{
 		return false;
 	}
-	if (LoadDivGraph("image/ded.png", 16, 4, 4, PLAYER_SIZE_X, PLAYER_SIZE_Y, &mImage2[0]) == -1)
+	if (LoadDivGraph("image/ded2.png", 16, 4, 4, PLAYER_SIZE_X, PLAYER_SIZE_Y, &mDedImage2[0]) == -1)
 	{
 		return false;
 	}
-	if (LoadDivGraph("image/ded.png", 16, 4, 4, PLAYER_SIZE_X, PLAYER_SIZE_Y, &mImage3[0]) == -1)
+	if (LoadDivGraph("image/ded2.png", 16, 4, 4, PLAYER_SIZE_X, PLAYER_SIZE_Y, &mDedImage3[0]) == -1)
 	{
 		return false;
 	}
-	if (LoadDivGraph("image/ded.png", 16, 4, 4, PLAYER_SIZE_X, PLAYER_SIZE_Y, &mImage4[0]) == -1)
+	if (LoadDivGraph("image/ded1.png", 16, 4, 4, PLAYER_SIZE_X, PLAYER_SIZE_Y, &mDedImage4[0]) == -1)
 	{
 		return false;
-	}*/
+	}
 	return true;
 }
 
 Vector2d Enemy::Update(void)
 {
+	//-----------------------
+	if (mCnt > 0)
+	{
+		mPush = true;
+	}
+	else if (mCnt == 0)
+	{
+		mPush = false;
+	}
+	if (mCnt > 0)
+	{
+		mCnt--;
+	}
+	//-----------------------
+	if (mCnt2 > 0)
+	{
+		mPush2 = true;
+	}
+	else if (mCnt2 == 0)
+	{
+		mPush2 = false;
+	}
+	if (mCnt2 > 0)
+	{
+		mCnt2--;
+	}
+	//-----------------------
+	if (mCnt3 > 0)
+	{
+		mPush3 = true;
+	}
+	else if (mCnt3 == 0)
+	{
+		mPush3 = false;
+	}
+	if (mCnt3 > 0)
+	{
+		mCnt3--;
+	}
+	//-----------------------
+	if (mCnt4 > 0)
+	{
+		mPush4 = true;
+	}
+	else if (mCnt4 == 0)
+	{
+		mPush4 = false;
+	}
+	if (mCnt4 > 0)
+	{
+		mCnt4--;
+	}
 
 	mAnmCnt++;
 	return mPos;
@@ -76,27 +131,43 @@ Vector2d Enemy::Update(void)
 
 void Enemy::Draw(void)
 {
-	if (mEnemy1 == true)
+	//ê∂Ç´ÇƒÇÈ---------------------------------
+	if (mEnemy1 == true)//ã‡îØ
 	{
 		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_1, mPos.Y - mSizeOffset.Y + ENEMY_Y_1, mImage[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
-	else
-	{
-
-	}
-	if (mEnemy2 == true)
+	if (mEnemy2 == true)//èó
 	{
 		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_2, mPos.Y - mSizeOffset.Y + ENEMY_Y_2, mImage2[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
-	if (mEnemy3 == true)
+	if (mEnemy3 == true)//çïêl
 	{
 		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_3, mPos.Y - mSizeOffset.Y + ENEMY_Y_3, mImage3[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 
 	}
-	if (mEnemy4 == true)
+	if (mEnemy4 == true)//íÉîØ
 	{
 		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_4, mPos.Y - mSizeOffset.Y + ENEMY_Y_4, mImage4[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
+	//éÄÇÒÇæ-------------------------------------------------
+	if (mPush==true)
+	{
+		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_1, mPos.Y - mSizeOffset.Y + ENEMY_Y_1, mDedImage[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+	}
+	if (mPush2 == true)
+	{
+		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_2, mPos.Y - mSizeOffset.Y + ENEMY_Y_2, mDedImage2[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+	}
+	if (mPush3 == true)
+	{
+		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_3, mPos.Y - mSizeOffset.Y + ENEMY_Y_3, mDedImage3[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+	}
+	if (mPush4 == true)
+	{
+		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_4, mPos.Y - mSizeOffset.Y + ENEMY_Y_4, mDedImage4[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+	}
+
+
 }
 
 bool Enemy::Release(void)

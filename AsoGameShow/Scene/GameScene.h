@@ -18,6 +18,11 @@ public:
     bool IsEnemy3(void);
     bool IsEnemy4(void);
 
+    bool IsEPush1(void);
+    bool IsEPush2(void);
+    bool IsEPush3(void);
+    bool IsEPush4(void);
+
 
    
 private:

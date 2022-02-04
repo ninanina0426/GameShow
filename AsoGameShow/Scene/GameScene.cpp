@@ -35,6 +35,28 @@ bool GameScene::IsEnemy4(void)
     return mEnemy.mEnemy4;
 }
 
+bool GameScene::IsEPush1(void)
+{
+    return mEnemy.mPush;
+}
+
+bool GameScene::IsEPush2(void)
+{
+    return mEnemy.mPush2;
+}
+
+bool GameScene::IsEPush3(void)
+{
+    return mEnemy.mPush3;
+}
+
+bool GameScene::IsEPush4(void)
+{
+    return mEnemy.mPush4;
+}
+
+
+
 uniquBaseScn GameScene::Update( uniquBaseScn own)
 {
    /* for (const auto& obj : objList_)
@@ -65,6 +87,8 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
             if (CheckHitKey(KEY_INPUT_N))
             {
                 mEnemy.mEnemy1 = false;
+                mEnemy.mPush = true;
+                mEnemy.mCnt = +15;
             }
         }
 
@@ -79,6 +103,8 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
             if (CheckHitKey(KEY_INPUT_N))
             {
                 mEnemy.mEnemy2 = false;
+                mEnemy.mPush2 = true;
+                mEnemy.mCnt2 = +15;
             }
         }
 
@@ -93,6 +119,8 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
             if (CheckHitKey(KEY_INPUT_N))
             {
                 mEnemy.mEnemy3 = false;
+                mEnemy.mPush3 = true;
+                mEnemy.mCnt3 = +15;
             }
         }
 
@@ -107,6 +135,8 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
             if (CheckHitKey(KEY_INPUT_N))
             {
                 mEnemy.mEnemy4 = false;
+                mEnemy.mPush4 = true;
+                mEnemy.mCnt4 = +15;
             }
         }
 

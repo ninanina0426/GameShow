@@ -19,7 +19,7 @@ private:
 	int mDedImage3[16];		//画像の格納領域
 	int mDedImage4[16];		//画像の格納領域
 
-	bool mPush;
+	
 	
 	int mLife;			//キャラクターの体力
 	int mLifeMax;		//キャラクターの最大体力値
@@ -31,7 +31,6 @@ private:
 	int mMoveSpeed;		//キャラクター移動スピード
 	int mAnmCnt;		//キャラクターのアニメーション
 
-	int mCnt;
 public:
 	int mPosBottom;	//キャラクターの足元のY座標
 
@@ -44,9 +43,19 @@ public:
 	Vector2d GetPos(void);
 	Vector2d GetSize(void);
 
+	bool mPush;
+	bool mPush2;
+	bool mPush3;
+	bool mPush4;
+
 	bool mEnemy1;
 	bool mEnemy2;
 	bool mEnemy3;
 	bool mEnemy4;
+
+	int mCnt;
+	int mCnt2;
+	int mCnt3;
+	int mCnt4;
 };
 
