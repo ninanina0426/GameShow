@@ -5,8 +5,7 @@
 #include "../_debug/_DebugConOut.h"
 #include "../_debug/_DebugDispOut.h"
 
-constexpr int ScreenSizeX = 800;
-constexpr int ScreenSizeY = 650;
+
 //SceneMng* SceneMng::s_Instance = nullptr;
 
 void SceneMng::Run(void)

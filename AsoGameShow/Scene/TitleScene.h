@@ -13,5 +13,8 @@ private:
     SceneID GetSceneID(void) override { return SceneID::Title; };
    
 
+    //グラフィック関係
+    int Image_;
+    int count;
 };
 

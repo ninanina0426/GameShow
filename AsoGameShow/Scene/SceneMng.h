@@ -3,7 +3,8 @@
 
 #define lpSceneMng SceneMng::GetInstance()
 
-
+constexpr int ScreenSizeX = 800;
+constexpr int ScreenSizeY = 650;
 class SceneMng
 {
 public:

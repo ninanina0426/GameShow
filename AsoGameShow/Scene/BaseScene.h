@@ -9,7 +9,9 @@ enum class SceneID
 {
 	Transition,
 	Title,
+	PrologueScene,
 	Game,
+	EndScene,
 	Max
 };
 

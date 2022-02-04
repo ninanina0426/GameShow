@@ -152,12 +152,14 @@
   <ItemGroup>
     <ClCompile Include="Scene\BaseScene.cpp" />
     <ClCompile Include="Scene\common\ImageMng.cpp" />
+    <ClCompile Include="Scene\EndScene.cpp" />
     <ClCompile Include="Scene\Enemy.cpp" />
     <ClCompile Include="Scene\GameCommon.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
     <ClCompile Include="Scene\KeyCheck.cpp" />
     <ClCompile Include="Scene\main.cpp" />
     <ClCompile Include="Scene\Player.cpp" />
+    <ClCompile Include="Scene\PrologueScene.cpp" />
     <ClCompile Include="Scene\SceneMng.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
     <ClCompile Include="Scene\Transition\Crossover.cpp" />
@@ -174,11 +176,13 @@
     <ClInclude Include="Scene\common\details\Vector2.h" />
     <ClInclude Include="Scene\common\ImageMng.h" />
     <ClInclude Include="Scene\common\Vector2.h" />
+    <ClInclude Include="Scene\EndScene.h" />
     <ClInclude Include="Scene\Enemy.h" />
     <ClInclude Include="Scene\GameCommon.h" />
     <ClInclude Include="Scene\GameScene.h" />
     <ClInclude Include="Scene\KeyCheck.h" />
     <ClInclude Include="Scene\Player.h" />
+    <ClInclude Include="Scene\PrologueScene.h" />
     <ClInclude Include="Scene\SceneMng.h" />
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="Scene\Transition\Crossover.h" />
