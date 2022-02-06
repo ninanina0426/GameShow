@@ -11,6 +11,8 @@ private:
 
 	int mImage[16];		//画像の格納領域
 	int mImage2[16];		//画像の格納領域
+	int mImage3[4];		//画像の格納領域
+	int mImage4[4];		//画像の格納領域
 
 	bool mPush;
 	int mLife;			//キャラクターの体力
@@ -24,6 +26,10 @@ private:
 	int mAnmCnt;		//キャラクターのアニメーション
 
 	int mCnt;
+	//
+	int mDCnt;
+	Vector2d mDorPos;
+	bool mDor;
 public:
 	int mPosBottom;	//キャラクターの足元のY座標
 

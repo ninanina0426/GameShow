@@ -59,7 +59,7 @@ bool TitleScene::Init(void)
 {
 	
 	count = 0;
-	Image_ = LoadGraph("image/demo.png");
+	Image_ = LoadGraph("image/title.png");
 	return true;
 }
 

@@ -71,11 +71,15 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
     Vector2d enemySize;
     Vector2d playerSize;
 
+   
+
     playerPos = mPlayer.Update();
     enemyPos = mEnemy.Update();
     enemySize = mEnemy.GetSize();
     GetDIR = mPlayer.GetDIR();
     playerSize = mPlayer.GetSiz();
+
+    mStage.Update(playerPos);
 
     if (mEnemy.mEnemy1)
     {
@@ -144,6 +148,8 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
     //---------------------------------------------------------------------------
 
     DrawOwnScn();
+
+   /* mStage.SetMap();*/
     
     if (CheckSoundFile()!=1)
     {
@@ -181,7 +187,9 @@ void GameScene::DrawOwnScn()
         }
     }*/
     DrawBox(0, 0, 640, 480, 0x000000, true);
-    DrawGraph(0, 0, bg_, true);
+   /* DrawGraph(0, 0, bg_, true);*/
+
+    mStage.Draw();
 
     mEnemy.Draw();
     //ÉvÉåÉCÉÑÅ[ÇÃï`âÊ
@@ -216,9 +224,19 @@ bool GameScene::Init(void)
     //AnimMng anim;
    // anim.AnimInit();
 
+    mStage.Init();
     mPlayer.init(this);
     mEnemy.init(this);
     BGM_ = LoadSoundMem("./music/Electric_Equipment_Connection.mp3");
+
+    return true;
+}
+
+bool GameScene::Release(void)
+{
+    mStage.Release();
+    mPlayer.Release();
+    mEnemy.Release();
 
     return true;
 }

@@ -16,6 +16,8 @@ public:
 	void Run(void);
 	void Update(void);
 	void Draw(void);
+	bool Release(void);
+
 private:
 	bool SysInit(void);
 	bool InitFlag_;//ƒVƒXƒeƒ€‚Ìˆ—‚ª³í‚©

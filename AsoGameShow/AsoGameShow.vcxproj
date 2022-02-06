@@ -161,6 +161,7 @@
     <ClCompile Include="Scene\Player.cpp" />
     <ClCompile Include="Scene\PrologueScene.cpp" />
     <ClCompile Include="Scene\SceneMng.cpp" />
+    <ClCompile Include="Scene\Stage.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
     <ClCompile Include="Scene\Transition\Crossover.cpp" />
     <ClCompile Include="Scene\Transition\FadeInOut.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="Scene\Player.h" />
     <ClInclude Include="Scene\PrologueScene.h" />
     <ClInclude Include="Scene\SceneMng.h" />
+    <ClInclude Include="Scene\Stage.h" />
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="Scene\Transition\Crossover.h" />
     <ClInclude Include="Scene\Transition\FadeInOut.h" />

@@ -2,8 +2,8 @@
 
 
 //マップのチップのサイズ
-#define CHIP_SIZE_X 124
-#define CHIP_SIZE_Y 96
+#define CHIP_SIZE_X 32
+#define CHIP_SIZE_Y 32
 
 #define PLAYER_SIZE_X 32
 #define PLAYER_SIZE_Y 32

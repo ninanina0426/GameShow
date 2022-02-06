@@ -50,6 +50,13 @@ void SceneMng::Draw(void)
 {
 }
 
+bool SceneMng::Release(void)
+{
+	scene_.release();
+
+	return true;
+}
+
 bool SceneMng::SysInit(void)
 {
 	SetWindowText("ASOGAME");
