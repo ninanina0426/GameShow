@@ -27,9 +27,18 @@ void EndScene::DrawOwnScn()
 	{
 		DrawFormatString(600, 600, 0xffffff, "END_1 #‚»‚ê‚Í˜ü–‚¾‚ËB");
 	}
+
+	if (endType_ == "end_2")
+	{
+		DrawFormatString(600, 600, 0xffffff, "END_1 #‚»‚ê‚Í˜ü–‚¾‚ËB");
+	}
+	if (endType_ == "end_3")
+	{
+		DrawFormatString(600, 600, 0xffffff, "END_1 #‚»‚ê‚Í˜ü–‚¾‚ËB");
+	}
 }
 
 bool EndScene::Init(void)
 {
-	return false;
+	return true;
 }

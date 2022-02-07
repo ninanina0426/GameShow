@@ -55,7 +55,7 @@ bool GameScene::IsEPush4(void)
     return mEnemy.mPush4;
 }
 
-int GameScene::GetEvent(Vector2d pos)
+int GameScene::GetEvent(Vector2 pos)
 {
     int chipID = mStage.GetMapChip(pos);
 
@@ -72,11 +72,11 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
     }*/
    
     //“–‚½‚è”»’è----------------------------------------------------------------
-    Vector2d playerPos;
-    Vector2d enemyPos;
+    Vector2 playerPos;
+    Vector2 enemyPos;
     DIR GetDIR;
-    Vector2d enemySize;
-    Vector2d playerSize;
+    Vector2 enemySize;
+    Vector2 playerSize;
 
    
 
@@ -90,10 +90,10 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
 
     if (mEnemy.mEnemy1)
     {
-        if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_1+ enemySize.Y / 2) &&
-            (enemyPos.Y+ ENEMY_Y_1 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
-            (playerPos.X - playerSize.X / 2 < enemyPos.X+ ENEMY_X_1 + enemySize.X / 2) &&
-            (enemyPos.X+ ENEMY_X_1 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
+        if ((playerPos.y_ - playerSize.y_ / 2 < enemyPos.y_ + ENEMY_Y_1+ enemySize.y_ / 2) &&
+            (enemyPos.y_+ ENEMY_Y_1 - enemySize.y_ / 2 < playerPos.y_ + playerSize.y_ / 2) &&
+            (playerPos.x_ - playerSize.x_ / 2 < enemyPos.x_+ ENEMY_X_1 + enemySize.x_ / 2) &&
+            (enemyPos.x_+ ENEMY_X_1 - enemySize.x_ / 2 < playerPos.x_ + playerSize.x_ / 2))
         {
             if (CheckHitKey(KEY_INPUT_N))
             {
@@ -106,10 +106,10 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
     }
     if (mEnemy.mEnemy2)
     {
-        if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_2 + enemySize.Y / 2) &&
-            (enemyPos.Y + ENEMY_Y_2 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
-            (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_2 + enemySize.X / 2) &&
-            (enemyPos.X + ENEMY_X_2 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
+        if ((playerPos.y_ - playerSize.y_ / 2 < enemyPos.y_ + ENEMY_Y_2 + enemySize.y_ / 2) &&
+            (enemyPos.y_ + ENEMY_Y_2 - enemySize.y_ / 2 < playerPos.y_ + playerSize.y_ / 2) &&
+            (playerPos.x_ - playerSize.x_ / 2 < enemyPos.x_ + ENEMY_X_2 + enemySize.x_ / 2) &&
+            (enemyPos.x_ + ENEMY_X_2 - enemySize.x_ / 2 < playerPos.x_ + playerSize.x_ / 2))
         {
             if (CheckHitKey(KEY_INPUT_N))
             {
@@ -122,10 +122,10 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
     }
     if (mEnemy.mEnemy3)
     {
-        if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_3 + enemySize.Y / 2) &&
-            (enemyPos.Y + ENEMY_Y_3 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
-            (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_3 + enemySize.X / 2) &&
-            (enemyPos.X + ENEMY_X_3 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
+        if ((playerPos.y_ - playerSize.y_ / 2 < enemyPos.y_ + ENEMY_Y_3 + enemySize.y_ / 2) &&
+            (enemyPos.y_ + ENEMY_Y_3 - enemySize.y_ / 2 < playerPos.y_ + playerSize.y_ / 2) &&
+            (playerPos.x_ - playerSize.x_ / 2 < enemyPos.x_ + ENEMY_X_3 + enemySize.x_ / 2) &&
+            (enemyPos.x_ + ENEMY_X_3 - enemySize.x_ / 2 < playerPos.x_ + playerSize.x_ / 2))
         {
             if (CheckHitKey(KEY_INPUT_N))
             {
@@ -138,10 +138,10 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
     }
     if (mEnemy.mEnemy4)
     {
-        if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_4 + enemySize.Y / 2) &&
-            (enemyPos.Y + ENEMY_Y_4 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
-            (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_4 + enemySize.X / 2) &&
-            (enemyPos.X + ENEMY_X_4 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
+        if ((playerPos.y_ - playerSize.y_ / 2 < enemyPos.y_ + ENEMY_Y_4 + enemySize.y_ / 2) &&
+            (enemyPos.y_ + ENEMY_Y_4 - enemySize.y_ / 2 < playerPos.y_ + playerSize.y_ / 2) &&
+            (playerPos.x_ - playerSize.x_ / 2 < enemyPos.x_ + ENEMY_X_4 + enemySize.x_ / 2) &&
+            (enemyPos.x_ + ENEMY_X_4 - enemySize.x_ / 2 < playerPos.x_ + playerSize.x_ / 2))
         {
             if (CheckHitKey(KEY_INPUT_N))
             {

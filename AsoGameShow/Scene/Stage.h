@@ -1,5 +1,5 @@
 #pragma once
-#include"Vector2d.h"
+#include "common/Vector2.h"
 #include "GameCommon.h"
 
 #define CHIP_CNT_MAX 840
@@ -21,7 +21,7 @@ private://メンバ関数
 	int mStringWidth;//文字列のピクセル描画
 	int mChipImage[CHIP_CNT_MAX];
 	
-	Vector2d mOffset;
+	Vector2 mOffset;
 	
 	
 
@@ -32,10 +32,10 @@ private://メンバ関数
 public://メンバ関数
 
 	bool Init(void);				//インスタンスの初期化
-	Vector2d Update(Vector2d mPlayerset);//インスタンスの更新処理
+	Vector2 Update(Vector2 mPlayerset);//インスタンスの更新処理
 	void Draw(void);				//インスタンスの描画
 	bool Release(void);				//インスタンスの開放
-	int GetMapChip(Vector2d Pos);	//座標を指定してマップチップデータをもらう
+	int GetMapChip(Vector2 Pos);	//座標を指定してマップチップデータをもらう
 	void SetMap(void);		//マップデータをｍMapに設定する
 	void subInit(void);
 

@@ -1,8 +1,15 @@
 #include "Enemy.h"
 #include <DxLib.h>
+#include <cmath>
 #include"KeyCheck.h"
 #include"GameScene.h"
 
+
+Vector2Flt Enemy::Normalize(Vector2Flt pos)
+{
+	float mag = sqrt(pos.x_ * pos.x_ + pos.y_ * pos.y_);
+	return Vector2Flt(pos.x_ / mag, pos.y_ / mag);
+}
 
 bool Enemy::init(GameScene* parent)
 {
@@ -10,15 +17,15 @@ bool Enemy::init(GameScene* parent)
 
 	//parent->Draw();		//ゲームシーンのドローってこと
 
-	mPos.X = 0;
-	mPos.Y = 0;
+	mPos.x_ = 0;
+	mPos.y_ = 0;
 
 	mMoveSpeed = 2;
 	mMoveDir = DIR_DOWN;
-	mSize.X = 32;
-	mSize.Y = 32;
-	mSizeOffset.X = mSize.X / 2;
-	mSizeOffset.Y = mSize.Y / 2;
+	mSize.x_ = 32;
+	mSize.y_ = 32;
+	mSizeOffset.x_ = mSize.x_ / 2;
+	mSizeOffset.y_ = mSize.x_ / 2;
 
 	mEnemy1 = true;
 	mEnemy2 = true;
@@ -32,6 +39,8 @@ bool Enemy::init(GameScene* parent)
 	mAnmCnt = 0;
 	mCnt = 0;
 	SetTransColor(255, 0, 255);
+
+	bulletPos_ = { 0,0 };
 
 	//true-------------------------------------------------
 	if (LoadDivGraph("image/11.png", 16, 4, 4, PLAYER_SIZE_X, PLAYER_SIZE_Y, &mImage[0]) == -1)
@@ -70,7 +79,7 @@ bool Enemy::init(GameScene* parent)
 	return true;
 }
 
-Vector2d Enemy::Update(void)
+Vector2 Enemy::Update(void)
 {
 	//-----------------------
 	if (mCnt > 0)
@@ -125,6 +134,11 @@ Vector2d Enemy::Update(void)
 		mCnt4--;
 	}
 
+
+	auto pPos=player_.GetPlayerPos();
+	auto Pos = (pPos - mPos);
+	//bulletPos_=
+
 	mAnmCnt++;
 	return mPos;
 }
@@ -134,39 +148,41 @@ void Enemy::Draw(void)
 	//生きてる---------------------------------
 	if (mEnemy1 == true)//金髪
 	{
-		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_1, mPos.Y - mSizeOffset.Y + ENEMY_Y_1, mImage[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_1, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_1, mImage[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
 	if (mEnemy2 == true)//女
 	{
-		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_2, mPos.Y - mSizeOffset.Y + ENEMY_Y_2, mImage2[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_2, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_2, mImage2[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
 	if (mEnemy3 == true)//黒人
 	{
-		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_3, mPos.Y - mSizeOffset.Y + ENEMY_Y_3, mImage3[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_3, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_3, mImage3[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 
 	}
 	if (mEnemy4 == true)//茶髪
 	{
-		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_4, mPos.Y - mSizeOffset.Y + ENEMY_Y_4, mImage4[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_4, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_4, mImage4[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
 	//死んだ-------------------------------------------------
 	if (mPush==true)
 	{
-		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_1, mPos.Y - mSizeOffset.Y + ENEMY_Y_1, mDedImage[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_1, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_1, mDedImage[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
 	if (mPush2 == true)
 	{
-		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_2, mPos.Y - mSizeOffset.Y + ENEMY_Y_2, mDedImage2[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_2, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_2, mDedImage2[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
 	if (mPush3 == true)
 	{
-		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_3, mPos.Y - mSizeOffset.Y + ENEMY_Y_3, mDedImage3[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_3, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_3, mDedImage3[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
 	if (mPush4 == true)
 	{
-		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_4, mPos.Y - mSizeOffset.Y + ENEMY_Y_4, mDedImage4[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_4, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_4, mDedImage4[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
 
+
+	DrawCircle(mPos.x_ - mSizeOffset.x_ + ENEMY_X_4, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_4, 50, 0xff, true);
 
 }
 
@@ -192,12 +208,12 @@ bool Enemy::IsAlive(void)
 	return false;
 }
 
-Vector2d Enemy::GetPos(void)
+Vector2 Enemy::GetPos(void)
 {
 	return mPos;
 }
 
-Vector2d Enemy::GetSize(void)
+Vector2 Enemy::GetSize(void)
 {
 	return mSize;
 }

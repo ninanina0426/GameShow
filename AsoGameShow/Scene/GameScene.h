@@ -26,7 +26,7 @@ public:
     bool IsEPush4(void);
 
     //チップ座標を受け取りマップチップ番号を返す
-    int GetEvent(Vector2d pos);
+    int GetEvent(Vector2 pos);
    
 private:
     uniquBaseScn Update( uniquBaseScn own) override;
@@ -39,7 +39,7 @@ private:
     Stage  mStage;
     /*std::list<std::unique_ptr<Obj>> objList_;*/
     int gameScene_;
-    Vector2d mMapOffset;
+    Vector2 mMapOffset;
     int bg_;
     int BGM_;
     TmxObj tmxobj_;

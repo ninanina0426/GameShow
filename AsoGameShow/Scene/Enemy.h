@@ -1,6 +1,8 @@
 #pragma once
+#include "common/Vector2.h"
 #include"Vector2d.h"
 #include "GameCommon.h"
+#include "Player.h"
 class GameScene;
 
 class Enemy
@@ -25,23 +27,30 @@ private:
 	int mLifeMax;		//キャラクターの最大体力値
 
 	DIR mMoveDir;		//キャラクターの向き
-	Vector2d mPos;		//キャラクターの地図上の座標
-	Vector2d mSizeOffset;//キャラクターのオフセットサイズ　　半分の値
-	Vector2d mSize;		//キャラクター画像のサイズ
+	Vector2 mPos;		//キャラクターの地図上の座標
+	Vector2 mSizeOffset;//キャラクターのオフセットサイズ　　半分の値
+	Vector2 mSize;		//キャラクター画像のサイズ
 	int mMoveSpeed;		//キャラクター移動スピード
 	int mAnmCnt;		//キャラクターのアニメーション
 
+	Player player_;
+
+
+	//弾関連（クラス作ってもいいけどちょっとめんどう？）
+	Vector2 bulletPos_;
+	int Speed_;
+	Vector2Flt Normalize(Vector2Flt pos);
 public:
 	int mPosBottom;	//キャラクターの足元のY座標
 
 	bool init(GameScene* parent);		//初期化
-	Vector2d Update(void);		//更新
+	Vector2 Update(void);		//更新
 	void Draw(void);		//描画
 	bool Release(void);		//開放
 	DIR GetDIR(void);
 	bool IsAlive(void);
-	Vector2d GetPos(void);
-	Vector2d GetSize(void);
+	Vector2 GetPos(void);
+	Vector2 GetSize(void);
 
 	bool mPush;
 	bool mPush2;
@@ -57,5 +66,7 @@ public:
 	int mCnt2;
 	int mCnt3;
 	int mCnt4;
+
+	
 };
 

@@ -67,8 +67,8 @@ int STAGE_KAGU[MAP_Y][MAP_X] = {
 
 bool Stage::Init(void)
 {
-	mOffset.X = 0;
-	mOffset.Y = 0;
+	mOffset.x_ = 0;
+	mOffset.y_ = 0;
 
 
 	SetMap();
@@ -81,7 +81,7 @@ bool Stage::Init(void)
 	return true;
 }
 
-Vector2d Stage::Update(Vector2d mPlayerset)
+Vector2 Stage::Update(Vector2 mPlayerset)
 {
 	return mOffset;
 }
@@ -94,7 +94,7 @@ void Stage::Draw(void)
 		for (int x = 0; x < MAP_X; x++)
 		{
 
-			DrawGraph(x * CHIP_SIZE_X - mOffset.X, y * CHIP_SIZE_Y - mOffset.Y, mChipImage[mMap[y][x]], true);
+			DrawGraph(x * CHIP_SIZE_X - mOffset.x_, y * CHIP_SIZE_Y - mOffset.y_, mChipImage[mMap[y][x]], true);
 
 		}
 	}
@@ -103,7 +103,7 @@ void Stage::Draw(void)
 		for (int x = 0; x < MAP_X; x++)
 		{
 
-			DrawGraph(x * CHIP_SIZE_X - mOffset.X, y * CHIP_SIZE_Y - mOffset.Y, mChipImage[mMapYuka[y][x]], true);
+			DrawGraph(x * CHIP_SIZE_X - mOffset.x_, y * CHIP_SIZE_Y - mOffset.y_, mChipImage[mMapYuka[y][x]], true);
 			/*DrawFormatString(32 * x - mOffset.X, 32 * y - mOffset.Y, GetColor(255, 255, 255), "%d", mMapYuka[y][x]);*/
 		}
 	}
@@ -112,7 +112,7 @@ void Stage::Draw(void)
 		for (int x = 0; x < MAP_X; x++)
 		{
 
-			DrawGraph(x * CHIP_SIZE_X - mOffset.X, y * CHIP_SIZE_Y - mOffset.Y, mChipImage[mMapKagu[y][x]], true);
+			DrawGraph(x * CHIP_SIZE_X - mOffset.x_, y * CHIP_SIZE_Y - mOffset.y_, mChipImage[mMapKagu[y][x]], true);
 			/*DrawFormatString(32 * x - mOffset.X, 32 * y - mOffset.Y, GetColor(255, 255, 255), "%d", mMapYuka[y][x]);*/
 		}
 	}
@@ -131,9 +131,9 @@ bool Stage::Release(void)
 	return true;
 }
 
-int Stage::GetMapChip(Vector2d Pos)
+int Stage::GetMapChip(Vector2 Pos)
 {
-	return mMapYuka[Pos.Y / 32][Pos.X / 32];
+	return mMapYuka[Pos.y_ / 32][Pos.x_ / 32];
 }
 
 void Stage::SetMap(void)

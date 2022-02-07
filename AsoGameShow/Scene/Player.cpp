@@ -3,27 +3,32 @@
 #include"KeyCheck.h"
 #include"GameScene.h"
 
+Vector2 Player::GetPlayerPos(void)
+{
+	return mPos;
+}
+
 bool Player::init(GameScene * parent)
 {
 	mParent = parent;
 
 	//parent->Draw();		//ゲームシーンのドローってこと
 
-	mPos.X = 531;
-	mPos.Y = 230;
+	mPos.x_ = 531;
+	mPos.y_ = 230;
 
-	mDorPos.X = 503;
-	mDorPos.Y = 151;
+	mDorPos.x_ = 503;
+	mDorPos.y_ = 151;
 	
 
 	mMoveSpeed = 2;
 	mMoveDir = DIR_LEFT;
 
 
-	mSize.X = PLAYER_A_SIZE_X;
-	mSize.Y = PLAYER_SIZE_Y;
-	mSizeOffset.X = mSize.X / 2;
-	mSizeOffset.Y = mSize.Y / 2;
+	mSize.x_ = PLAYER_A_SIZE_X;
+	mSize.y_ = PLAYER_SIZE_Y;
+	mSizeOffset.x_ = mSize.x_ / 2;
+	mSizeOffset.y_ = mSize.y_ / 2;
 
 	mPush = false;
 	mAnmCnt = 0;
@@ -57,10 +62,10 @@ bool Player::init(GameScene * parent)
 
 }
 
-Vector2d Player::Update(void)
+Vector2 Player::Update(void)
 {
 	DIR keyDir = DIR_MAX;		//キー入力の方向
-	Vector2d copyPos=mPos;
+	Vector2 copyPos=mPos;
 
 	if (mCnt > 0)
 	{
@@ -125,8 +130,8 @@ Vector2d Player::Update(void)
 	if (mDCnt>0&&mDCnt<55
 		)
 	{
-		mPos.X -= 1;
-		mPos.Y += 1;
+		mPos.x_ -= 1;
+		mPos.y_ += 1;
 	}
 	if (keyDir != DIR_MAX)
 	{
@@ -134,39 +139,39 @@ Vector2d Player::Update(void)
 
 		if (keyDir == DIR_UP)
 		{
-			copyPos.Y -= mMoveSpeed / 2;
-			if (copyPos.Y < 0)
+			copyPos.y_ -= mMoveSpeed / 2;
+			if (copyPos.y_ < 0)
 			{
-				copyPos.Y = 0;
+				copyPos.y_ = 0;
 			}
 
 		}
 		if (keyDir == DIR_DOWN)
 		{
-			copyPos.Y += mMoveSpeed / 2;
-			if (copyPos.Y > MAP_Y * CHIP_SIZE_Y)
+			copyPos.y_ += mMoveSpeed / 2;
+			if (copyPos.y_ > MAP_Y * CHIP_SIZE_Y)
 			{
-				copyPos.Y = MAP_Y * CHIP_SIZE_Y;
+				copyPos.y_ = MAP_Y * CHIP_SIZE_Y;
 			}
 
 		}
 		if (keyDir == DIR_RIGHT)
 		{
-			copyPos.X += mMoveSpeed / 2;		//プレイヤーのマップ上の移動
+			copyPos.x_ += mMoveSpeed / 2;		//プレイヤーのマップ上の移動
 			/*copyPos.Y -= mMoveSpeed / 2;*/
-			if (copyPos.X > MAP_X * CHIP_SIZE_X)
+			if (copyPos.x_ > MAP_X * CHIP_SIZE_X)
 			{
-				copyPos.X = MAP_X * CHIP_SIZE_X;
+				copyPos.x_ = MAP_X * CHIP_SIZE_X;
 			}
 
 		}
 		if (keyDir == DIR_LEFT)
 		{
-			copyPos.X -= mMoveSpeed / 2;
+			copyPos.x_ -= mMoveSpeed / 2;
 			/*copyPos.Y += mMoveSpeed / 2;*/
-			if (copyPos.X < 0)
+			if (copyPos.x_ < 0)
 			{
-				copyPos.X = 0;
+				copyPos.x_ = 0;
 			}
 
 		}
@@ -258,26 +263,26 @@ Vector2d Player::Update(void)
 	return mPos;
 }
 
-void Player::Draw(Vector2d offset)
+void Player::Draw(Vector2 offset)
 {
 
 	if (mDor == true)
 	{
-		DrawGraph(mDorPos.X, mDorPos.Y, mImage4[((mAnmCnt / 20) % 4)], true);
+		DrawGraph(mDorPos.x_, mDorPos.y_, mImage4[((mAnmCnt / 20) % 4)], true);
 	}
 	if (mPush == false)
 	{
-		DrawGraph(mPos.X - offset.X - mSizeOffset.X, mPos.Y - offset.Y - mSizeOffset.Y, mImage[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		DrawGraph(mPos.x_ - offset.x_ - mSizeOffset.x_, mPos.y_ - offset.y_ - mSizeOffset.y_, mImage[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
 	else if (mPush == true)
 	{
-		DrawGraph(mPos.X - offset.X - mSizeOffset.X, mPos.Y - offset.Y - mSizeOffset.Y, mImage2[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		DrawGraph(mPos.x_ - offset.x_ - mSizeOffset.x_, mPos.y_ - offset.y_ - mSizeOffset.y_, mImage2[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
 	if (mDor == true)
 	{
-		DrawGraph(mDorPos.X , mDorPos.Y , mImage3[((mAnmCnt / 20) % 4)], true);
+		DrawGraph(mDorPos.x_ , mDorPos.y_ , mImage3[((mAnmCnt / 20) % 4)], true);
 	}
-	DrawFormatString(0, 50, GetColor(255, 255, 255), "playerPos=(%d,%d)", mPos.X, mPos.Y);
+	DrawFormatString(0, 50, GetColor(255, 255, 255), "playerPos=(%d,%d)", mPos.x_, mPos.y_);
 
 }
 
@@ -296,13 +301,13 @@ bool Player::IsAlive(void)
 	return false;
 }
 
-void Player::SetPos(Vector2d pos)
+void Player::SetPos(Vector2 pos)
 {
 	mPos = pos;
 }
 
 
-Vector2d Player::GetSiz(void)
+Vector2 Player::GetSiz(void)
 {
 	return mSize;
 }
