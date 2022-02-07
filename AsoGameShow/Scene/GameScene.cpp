@@ -55,6 +55,13 @@ bool GameScene::IsEPush4(void)
     return mEnemy.mPush4;
 }
 
+int GameScene::GetEvent(Vector2d pos)
+{
+    int chipID = mStage.GetMapChip(pos);
+
+    return chipID;
+}
+
 
 
 uniquBaseScn GameScene::Update( uniquBaseScn own)
@@ -79,7 +86,7 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
     GetDIR = mPlayer.GetDIR();
     playerSize = mPlayer.GetSiz();
 
-    mStage.Update(playerPos);
+    mMapOffset = mStage.Update(playerPos);
 
     if (mEnemy.mEnemy1)
     {
@@ -187,13 +194,15 @@ void GameScene::DrawOwnScn()
         }
     }*/
     DrawBox(0, 0, 640, 480, 0x000000, true);
-   /* DrawGraph(0, 0, bg_, true);*/
+   
 
     mStage.Draw();
 
     mEnemy.Draw();
     //ÉvÉåÉCÉÑÅ[ÇÃï`âÊ
-    mPlayer.Draw();
+    mPlayer.Draw(mMapOffset);
+
+    DrawGraph(0, 0, bg_, true);
 
     PlaySoundMem(BGM_, DX_PLAYTYPE_LOOP, true);
     SetDrawScreen(sceneScrID_);
@@ -218,7 +227,7 @@ bool GameScene::Init(void)
     gameScene_ = MakeScreen(620, 480, 255);
      //tmxobj_.LoadTMX("./tmx/map.tmx");
     tmxobj_.LoadTMX("./tmx/test.tmx");
-    bg_ = LoadGraph("./image/kannsei.png");
+    bg_ = LoadGraph("image/add2.png");
     /*objList_.emplace_back(std::make_unique<Player>(CntType::KEY));
     objList_.emplace_back(std::make_unique<Player>(CntType::PAD));*/
     //AnimMng anim;

@@ -5,6 +5,7 @@
 #include"Enemy.h"
 #include"Stage.h"
 #include "BaseScene.h"
+#include"Vector2d.h"
 #include "../tmx/TmxObj.h"
 
 class GameScene :
@@ -24,7 +25,8 @@ public:
     bool IsEPush3(void);
     bool IsEPush4(void);
 
-
+    //チップ座標を受け取りマップチップ番号を返す
+    int GetEvent(Vector2d pos);
    
 private:
     uniquBaseScn Update( uniquBaseScn own) override;
@@ -37,7 +39,7 @@ private:
     Stage  mStage;
     /*std::list<std::unique_ptr<Obj>> objList_;*/
     int gameScene_;
-
+    Vector2d mMapOffset;
     int bg_;
     int BGM_;
     TmxObj tmxobj_;

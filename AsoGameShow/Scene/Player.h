@@ -35,10 +35,10 @@ public:
 
 	bool init(GameScene* parent);		//‰Šú‰»
 	Vector2d Update(void);		//XV
-	void Draw(void);		//•`‰æ
+	void Draw(Vector2d offset);		//•`‰æ
 	bool Release(void);		//ŠJ•ú
 	bool IsAlive(void);
-
+	void SetPos(Vector2d pos);
 	Vector2d GetSiz(void);
 	DIR GetDIR(void);
 };

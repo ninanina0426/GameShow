@@ -22,8 +22,8 @@ private://メンバ関数
 	int mChipImage[CHIP_CNT_MAX];
 	
 	Vector2d mOffset;
-	//int mOffsetX;		//カメラのX座標
-	//int mOffsetY;		//カメラのY座標
+	
+	
 
 	bool mFadeOut;
 	bool mFadeIn;
@@ -38,5 +38,7 @@ public://メンバ関数
 	int GetMapChip(Vector2d Pos);	//座標を指定してマップチップデータをもらう
 	void SetMap(void);		//マップデータをｍMapに設定する
 	void subInit(void);
+
+
 };
 
