@@ -71,7 +71,7 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
     DIR GetDIR;
     Vector2 enemySize;
     Vector2 playerSize;
-
+    Vector2 ShotPos;
    
 
     playerPos = mPlayer.Update();
@@ -79,6 +79,7 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
     enemySize = mEnemy.GetSize();
     GetDIR = mPlayer.GetDIR();
     playerSize = mPlayer.GetSiz();
+    ShotPos = mEnemy.GetShotPos();
 
     mMapOffset = mStage.Update(playerPos);
 

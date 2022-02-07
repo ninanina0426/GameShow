@@ -1,6 +1,7 @@
 #include <DxLib.h>
 #include "EndScene.h"
-
+#include "Transition/FadeInOut.h"
+#include "TitleScene.h"
 EndScene::EndScene(std::string endtype)
 {
 	endType_ = endtype;
@@ -14,6 +15,10 @@ EndScene::~EndScene()
 
 uniquBaseScn EndScene::Update(uniquBaseScn own)
 {
+	if (CheckHitKey(KEY_INPUT_SPACE))
+	{
+		return std::make_unique<FadeInOut>(std::move(own), std::make_unique<TitleScene>());
+	}
 	DrawOwnScn();
 	return std::move(own);
 }

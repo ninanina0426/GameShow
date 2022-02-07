@@ -3,6 +3,8 @@
 #include "GameCommon.h"
 class GameScene;
 
+
+
 class Enemy
 {
 private:
@@ -35,9 +37,17 @@ private:
 
 
 	//弾関連（クラス作ってもいいけどちょっとめんどう？）
+	//Vector2 bulletPos_[4];
 	Vector2 bulletPos_;
+
 	int Speed_;
 	int BulletID_[256];
+	int count_;
+	//bool BulletFlag_[4];
+	bool BulletFlag_;
+
+	DIR bulletDir_;
+	Vector2 ShotPos;
 public:
 	int mPosBottom;	//キャラクターの足元のY座標
 
@@ -49,7 +59,7 @@ public:
 	bool IsAlive(void);
 	Vector2 GetPos(void);
 	Vector2 GetSize(void);
-
+	Vector2 GetShotPos(void);
 	bool mPush;
 	bool mPush2;
 	bool mPush3;
