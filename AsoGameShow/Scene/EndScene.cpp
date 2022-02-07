@@ -35,11 +35,12 @@ void EndScene::DrawOwnScn()
 
 	if (endType_ == "end_2")
 	{
+		DrawFormatString(430, 600, 0xffffff, "END_3 #自己満足な正義を振りかざして楽しいかい？");
 		DrawFormatString(490, 600, 0xffffff, "END_2 #好奇心は身を亡ぼすんだってさ");
 	}
 	if (endType_ == "end_3")
 	{
-		DrawFormatString(600, 600, 0xffffff, "END_1 #それは傲慢だね。");
+		DrawFormatString(450, 600, 0xffffff, "END_3 #自己満足な正義を振りかざして楽しいかい？");
 	}
 }
 
