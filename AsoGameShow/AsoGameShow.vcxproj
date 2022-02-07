@@ -166,7 +166,6 @@
     <ClCompile Include="Scene\Transition\Crossover.cpp" />
     <ClCompile Include="Scene\Transition\FadeInOut.cpp" />
     <ClCompile Include="Scene\Transition\TransitionScene.cpp" />
-    <ClCompile Include="tmx\TmxObj.cpp" />
     <ClCompile Include="_debug\_DebugConOut.cpp" />
     <ClCompile Include="_debug\_DebugDispOut.cpp" />
   </ItemGroup>
@@ -189,11 +188,6 @@
     <ClInclude Include="Scene\Transition\Crossover.h" />
     <ClInclude Include="Scene\Transition\FadeInOut.h" />
     <ClInclude Include="Scene\Transition\TransitionScene.h" />
-    <ClInclude Include="tmx\rapidxml.hpp" />
-    <ClInclude Include="tmx\rapidxml_iterators.hpp" />
-    <ClInclude Include="tmx\rapidxml_print.hpp" />
-    <ClInclude Include="tmx\rapidxml_utils.hpp" />
-    <ClInclude Include="tmx\TmxObj.h" />
     <ClInclude Include="_debug\_DebugConOut.h" />
     <ClInclude Include="_debug\_DebugDispOut.h" />
   </ItemGroup>

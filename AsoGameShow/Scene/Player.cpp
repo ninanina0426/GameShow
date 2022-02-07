@@ -3,10 +3,7 @@
 #include"KeyCheck.h"
 #include"GameScene.h"
 
-Vector2 Player::GetPlayerPos(void)
-{
-	return mPos;
-}
+
 
 bool Player::init(GameScene * parent)
 {
@@ -306,6 +303,10 @@ void Player::SetPos(Vector2 pos)
 	mPos = pos;
 }
 
+Vector2 Player::GetPlayerPos(void)
+{
+	return mPos;
+}
 
 Vector2 Player::GetSiz(void)
 {

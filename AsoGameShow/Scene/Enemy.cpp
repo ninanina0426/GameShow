@@ -1,15 +1,10 @@
 #include "Enemy.h"
 #include <DxLib.h>
-#include <cmath>
 #include"KeyCheck.h"
 #include"GameScene.h"
 
 
-Vector2Flt Enemy::Normalize(Vector2Flt pos)
-{
-	float mag = sqrt(pos.x_ * pos.x_ + pos.y_ * pos.y_);
-	return Vector2Flt(pos.x_ / mag, pos.y_ / mag);
-}
+
 
 bool Enemy::init(GameScene* parent)
 {
@@ -41,6 +36,12 @@ bool Enemy::init(GameScene* parent)
 	SetTransColor(255, 0, 255);
 
 	bulletPos_ = { 0,0 };
+	Speed_ = 5;
+	for (int i = 0; i < 256; i++)
+	{
+		BulletID_[i] = LoadGraph("image/shot.png");
+	}
+
 
 	//true-------------------------------------------------
 	if (LoadDivGraph("image/11.png", 16, 4, 4, PLAYER_SIZE_X, PLAYER_SIZE_Y, &mImage[0]) == -1)
@@ -79,7 +80,7 @@ bool Enemy::init(GameScene* parent)
 	return true;
 }
 
-Vector2 Enemy::Update(void)
+Vector2 Enemy::Update(Vector2 player)
 {
 	//-----------------------
 	if (mCnt > 0)
@@ -135,9 +136,14 @@ Vector2 Enemy::Update(void)
 	}
 
 
-	auto pPos=player_.GetPlayerPos();
-	auto Pos = (pPos - mPos);
-	//bulletPos_=
+	plPos_ = player;
+	//player‚Æ“G‚ÌŠÔ‚Ì‹——£
+	Vector2 Pos = (plPos_ - Vector2{ mPos.x_ - mSizeOffset.x_ + ENEMY_X_4, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_4,});
+	if (Pos.x_>= 0)
+	{
+		bulletPos_ += {Speed_, 0};
+	}
+	
 
 	mAnmCnt++;
 	return mPos;
@@ -180,9 +186,13 @@ void Enemy::Draw(void)
 	{
 		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_4, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_4, mDedImage4[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
+	DrawFormatString(0, 0, GetColor(255, 255, 255), "EnemyPos=(%d,%d)", mPos.x_, mPos.y_);
+	DrawFormatString(0, 20, GetColor(255, 255, 255), "BulletPos=(%d,%d)", bulletPos_.x_, bulletPos_.y_);
+	for (int i = 0; i < 2000; i++)
+	{
+		DrawCircle((mPos.x_ - mSizeOffset.x_ + ENEMY_X_4) + bulletPos_.x_, (mPos.y_ - mSizeOffset.y_ + ENEMY_Y_4) + bulletPos_.y_, 3, 0xff0000, true);
+	}
 
-
-	DrawCircle(mPos.x_ - mSizeOffset.x_ + ENEMY_X_4, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_4, 50, 0xff, true);
 
 }
 

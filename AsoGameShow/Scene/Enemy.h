@@ -1,8 +1,6 @@
 #pragma once
 #include "common/Vector2.h"
-#include"Vector2d.h"
 #include "GameCommon.h"
-#include "Player.h"
 class GameScene;
 
 class Enemy
@@ -33,18 +31,18 @@ private:
 	int mMoveSpeed;		//キャラクター移動スピード
 	int mAnmCnt;		//キャラクターのアニメーション
 
-	Player player_;
+	Vector2 plPos_;
 
 
 	//弾関連（クラス作ってもいいけどちょっとめんどう？）
 	Vector2 bulletPos_;
 	int Speed_;
-	Vector2Flt Normalize(Vector2Flt pos);
+	int BulletID_[256];
 public:
 	int mPosBottom;	//キャラクターの足元のY座標
 
 	bool init(GameScene* parent);		//初期化
-	Vector2 Update(void);		//更新
+	Vector2 Update(Vector2 player);		//更新
 	void Draw(void);		//描画
 	bool Release(void);		//開放
 	DIR GetDIR(void);

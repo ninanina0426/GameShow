@@ -5,8 +5,7 @@
 #include"Enemy.h"
 #include"Stage.h"
 #include "BaseScene.h"
-#include"Vector2d.h"
-#include "../tmx/TmxObj.h"
+
 
 class GameScene :
     public BaseScene
@@ -37,12 +36,11 @@ private:
     Player mPlayer;
     Enemy mEnemy;
     Stage  mStage;
-    /*std::list<std::unique_ptr<Obj>> objList_;*/
     int gameScene_;
     Vector2 mMapOffset;
     int bg_;
-    int BGM_;
-    TmxObj tmxobj_;
+
+
     
 };
 
