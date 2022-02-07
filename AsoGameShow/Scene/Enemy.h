@@ -57,17 +57,17 @@ public:
 	bool Release(void);		//ŠJ•ú
 	DIR GetDIR(void);
 	bool IsAlive(void);
-<<<<<<< HEAD
-	Vector2d GetPos(void);
-	Vector2d GetSize(void);
-
+//<<<<<<< HEAD
+//	Vector2d GetPos(void);
+//	Vector2d GetSize(void);
+//
 	void IsDestry(void);
 
-=======
+
 	Vector2 GetPos(void);
 	Vector2 GetSize(void);
 	Vector2 GetShotPos(void);
->>>>>>> 0b2f29a0d7c9b31a6fd6ae28b7a1d2717b3f43b4
+
 	bool mPush;
 	bool mPush2;
 	bool mPush3;

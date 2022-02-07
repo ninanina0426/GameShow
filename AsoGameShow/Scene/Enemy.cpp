@@ -402,6 +402,7 @@ bool Enemy::IsAlive(void)
 	return false;
 }
 
+
 Vector2 Enemy::GetPos(void)
 {
 	return mPos;
@@ -412,13 +413,13 @@ Vector2 Enemy::GetSize(void)
 	return mSize;
 }
 
-<<<<<<< HEAD
 void Enemy::IsDestry(void)
 {
 	mLife -= 50;
-=======
+}
+
 Vector2 Enemy::GetShotPos(void)
 {
 	return ShotPos;
->>>>>>> 0b2f29a0d7c9b31a6fd6ae28b7a1d2717b3f43b4
+
 }

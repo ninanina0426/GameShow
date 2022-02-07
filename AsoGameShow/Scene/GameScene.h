@@ -39,23 +39,14 @@ private:
     Player mPlayer;
     Enemy mEnemy;
     Stage  mStage;
-<<<<<<< HEAD
     Chat mChat;
     /*std::list<std::unique_ptr<Obj>> objList_;*/
-=======
->>>>>>> 0b2f29a0d7c9b31a6fd6ae28b7a1d2717b3f43b4
+
     int gameScene_;
     Vector2 mMapOffset;
     int bg_;
-<<<<<<< HEAD
-    int BGM_;
-    TmxObj tmxobj_;
     //chat
     bool mIsChat;
-=======
 
-
-    
->>>>>>> 0b2f29a0d7c9b31a6fd6ae28b7a1d2717b3f43b4
 };
 
