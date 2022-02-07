@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Scene\BaseScene.cpp" />
+    <ClCompile Include="Scene\Chat.cpp" />
     <ClCompile Include="Scene\common\ImageMng.cpp" />
     <ClCompile Include="Scene\EndScene.cpp" />
     <ClCompile Include="Scene\Enemy.cpp" />
@@ -173,6 +174,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\BaseScene.h" />
+    <ClInclude Include="Scene\Chat.h" />
     <ClInclude Include="Scene\common\collision.h" />
     <ClInclude Include="Scene\common\details\Vector2.h" />
     <ClInclude Include="Scene\common\ImageMng.h" />

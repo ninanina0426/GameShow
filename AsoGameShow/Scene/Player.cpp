@@ -122,12 +122,12 @@ Vector2d Player::Update(void)
 		mCnt += 10;
 	}
 
-	if (mDCnt>0&&mDCnt<55
-		)
+	if (mDCnt>0&&mDCnt<55)
 	{
 		mPos.X -= 1;
 		mPos.Y += 1;
 	}
+
 	if (keyDir != DIR_MAX)
 	{
 		mMoveDir = keyDir;

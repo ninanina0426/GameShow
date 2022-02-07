@@ -20,6 +20,9 @@ bool Enemy::init(GameScene* parent)
 	mSizeOffset.X = mSize.X / 2;
 	mSizeOffset.Y = mSize.Y / 2;
 
+	mLife = 200;
+	mLifeMax = mLife;
+
 	mEnemy1 = true;
 	mEnemy2 = true;
 	mEnemy3 = true;
@@ -167,6 +170,7 @@ void Enemy::Draw(void)
 		DrawGraph(mPos.X - mSizeOffset.X + ENEMY_X_4, mPos.Y - mSizeOffset.Y + ENEMY_Y_4, mDedImage4[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
 	}
 
+	DrawFormatString(0, 150, GetColor(255, 255, 255), "EnemyLife=%d", mLife);
 
 }
 
@@ -200,4 +204,9 @@ Vector2d Enemy::GetPos(void)
 Vector2d Enemy::GetSize(void)
 {
 	return mSize;
+}
+
+void Enemy::IsDestry(void)
+{
+	mLife -= 50;
 }

@@ -4,9 +4,12 @@
 #include"Player.h"
 #include"Enemy.h"
 #include"Stage.h"
+#include"Chat.h"
 #include "BaseScene.h"
 #include"Vector2d.h"
 #include "../tmx/TmxObj.h"
+
+
 
 class GameScene :
     public BaseScene
@@ -37,12 +40,14 @@ private:
     Player mPlayer;
     Enemy mEnemy;
     Stage  mStage;
+    Chat mChat;
     /*std::list<std::unique_ptr<Obj>> objList_;*/
     int gameScene_;
     Vector2d mMapOffset;
     int bg_;
     int BGM_;
     TmxObj tmxobj_;
-    
+    //chat
+    bool mIsChat;
 };
 

@@ -66,103 +66,115 @@ int GameScene::GetEvent(Vector2d pos)
 
 uniquBaseScn GameScene::Update( uniquBaseScn own)
 {
-   /* for (const auto& obj : objList_)
-    {
-        obj->Update(tmxobj_);
-    }*/
    
-    //“–‚½‚è”»’è----------------------------------------------------------------
+
+
+
+
     Vector2d playerPos;
     Vector2d enemyPos;
     DIR GetDIR;
     Vector2d enemySize;
     Vector2d playerSize;
-
-   
-
-    playerPos = mPlayer.Update();
-    enemyPos = mEnemy.Update();
-    enemySize = mEnemy.GetSize();
-    GetDIR = mPlayer.GetDIR();
-    playerSize = mPlayer.GetSiz();
-
-    mMapOffset = mStage.Update(playerPos);
-
-    if (mEnemy.mEnemy1)
-    {
-        if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_1+ enemySize.Y / 2) &&
-            (enemyPos.Y+ ENEMY_Y_1 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
-            (playerPos.X - playerSize.X / 2 < enemyPos.X+ ENEMY_X_1 + enemySize.X / 2) &&
-            (enemyPos.X+ ENEMY_X_1 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
-        {
-            if (CheckHitKey(KEY_INPUT_N))
-            {
-                mEnemy.mEnemy1 = false;
-                mEnemy.mPush = true;
-                mEnemy.mCnt = +15;
-            }
-        }
-
-    }
-    if (mEnemy.mEnemy2)
-    {
-        if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_2 + enemySize.Y / 2) &&
-            (enemyPos.Y + ENEMY_Y_2 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
-            (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_2 + enemySize.X / 2) &&
-            (enemyPos.X + ENEMY_X_2 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
-        {
-            if (CheckHitKey(KEY_INPUT_N))
-            {
-                mEnemy.mEnemy2 = false;
-                mEnemy.mPush2 = true;
-                mEnemy.mCnt2 = +15;
-            }
-        }
-
-    }
-    if (mEnemy.mEnemy3)
-    {
-        if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_3 + enemySize.Y / 2) &&
-            (enemyPos.Y + ENEMY_Y_3 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
-            (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_3 + enemySize.X / 2) &&
-            (enemyPos.X + ENEMY_X_3 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
-        {
-            if (CheckHitKey(KEY_INPUT_N))
-            {
-                mEnemy.mEnemy3 = false;
-                mEnemy.mPush3 = true;
-                mEnemy.mCnt3 = +15;
-            }
-        }
-
-    }
-    if (mEnemy.mEnemy4)
-    {
-        if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_4 + enemySize.Y / 2) &&
-            (enemyPos.Y + ENEMY_Y_4 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
-            (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_4 + enemySize.X / 2) &&
-            (enemyPos.X + ENEMY_X_4 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
-        {
-            if (CheckHitKey(KEY_INPUT_N))
-            {
-                mEnemy.mEnemy4 = false;
-                mEnemy.mPush4 = true;
-                mEnemy.mCnt4 = +15;
-            }
-        }
-
-    }
-    //---------------------------------------------------------------------------
-
-    DrawOwnScn();
-
-   /* mStage.SetMap();*/
     
-    if (CheckSoundFile()!=1)
+    if (mIsChat == false)
+    {
+        playerPos = mPlayer.Update();
+        enemyPos = mEnemy.Update();
+        enemySize = mEnemy.GetSize();
+        GetDIR = mPlayer.GetDIR();
+        playerSize = mPlayer.GetSiz();
+
+        mMapOffset = mStage.Update(playerPos);
+
+        if (mEnemy.mEnemy1)
+        {
+            if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_1 + enemySize.Y / 2) &&
+                (enemyPos.Y + ENEMY_Y_1 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
+                (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_1 + enemySize.X / 2) &&
+                (enemyPos.X + ENEMY_X_1 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
+            {
+                if (CheckHitKey(KEY_INPUT_N))
+                {
+                    mEnemy.mEnemy1 = false;
+                    mEnemy.mPush = true;
+                    mEnemy.mCnt = +15;
+                    mEnemy.IsDestry();
+                }
+            }
+
+        }
+        if (mEnemy.mEnemy2)
+        {
+            if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_2 + enemySize.Y / 2) &&
+                (enemyPos.Y + ENEMY_Y_2 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
+                (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_2 + enemySize.X / 2) &&
+                (enemyPos.X + ENEMY_X_2 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
+            {
+                if (CheckHitKey(KEY_INPUT_N))
+                {
+                    mEnemy.mEnemy2 = false;
+                    mEnemy.mPush2 = true;
+                    mEnemy.mCnt2 = +15;
+                    mEnemy.IsDestry();
+                }
+            }
+
+        }
+        if (mEnemy.mEnemy3)
+        {
+            if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_3 + enemySize.Y / 2) &&
+                (enemyPos.Y + ENEMY_Y_3 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
+                (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_3 + enemySize.X / 2) &&
+                (enemyPos.X + ENEMY_X_3 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
+            {
+                if (CheckHitKey(KEY_INPUT_N))
+                {
+                    mEnemy.mEnemy3 = false;
+                    mEnemy.mPush3 = true;
+                    mEnemy.mCnt3 = +15;
+                    mEnemy.IsDestry();
+                }
+            }
+
+        }
+        if (mEnemy.mEnemy4)
+        {
+            if ((playerPos.Y - playerSize.Y / 2 < enemyPos.Y + ENEMY_Y_4 + enemySize.Y / 2) &&
+                (enemyPos.Y + ENEMY_Y_4 - enemySize.Y / 2 < playerPos.Y + playerSize.Y / 2) &&
+                (playerPos.X - playerSize.X / 2 < enemyPos.X + ENEMY_X_4 + enemySize.X / 2) &&
+                (enemyPos.X + ENEMY_X_4 - enemySize.X / 2 < playerPos.X + playerSize.X / 2))
+            {
+                if (CheckHitKey(KEY_INPUT_N))
+                {
+                    mEnemy.mEnemy4 = false;
+                    mEnemy.mPush4 = true;
+                    mEnemy.mCnt4 = +15;
+                    mEnemy.IsDestry();
+                }
+            }
+
+        }
+    }
+    if (CheckSoundFile() != 1)
     {
         printf("‚È‚Á‚Ä‚È‚¢‚æ\n");
     }
+
+    if (mIsChat == true)
+    {
+        mChat.Update();
+
+        if (mChat.IsEnd == true)
+        {
+            mIsChat = false;
+        }
+    }
+
+
+    DrawOwnScn();
     return std::move(own);
+
 }
 
 
@@ -203,6 +215,11 @@ void GameScene::DrawOwnScn()
     mPlayer.Draw(mMapOffset);
 
     DrawGraph(0, 0, bg_, true);
+    if (mIsChat == true)
+    {
+        mChat.Draw();
+    }
+   
 
     PlaySoundMem(BGM_, DX_PLAYTYPE_LOOP, true);
     SetDrawScreen(sceneScrID_);
@@ -233,11 +250,14 @@ bool GameScene::Init(void)
     //AnimMng anim;
    // anim.AnimInit();
 
+    mIsChat = true;
+   
     mStage.Init();
     mPlayer.init(this);
     mEnemy.init(this);
+    mChat.init();
     BGM_ = LoadSoundMem("./music/Electric_Equipment_Connection.mp3");
-
+    mIsChat = true;
     return true;
 }
 
@@ -246,6 +266,6 @@ bool GameScene::Release(void)
     mStage.Release();
     mPlayer.Release();
     mEnemy.Release();
-
+    mChat.Release();
     return true;
 }

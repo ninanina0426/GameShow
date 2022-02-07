@@ -43,6 +43,8 @@ public:
 	Vector2d GetPos(void);
 	Vector2d GetSize(void);
 
+	void IsDestry(void);
+
 	bool mPush;
 	bool mPush2;
 	bool mPush3;
