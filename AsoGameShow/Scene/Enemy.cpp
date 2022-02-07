@@ -34,6 +34,11 @@ bool Enemy::init(GameScene* parent)
 	mPush2 = false;
 	mPush3 = false;
 	mPush4 = false;
+
+	ShotAlive1 = true;
+	ShotAlive2 = true;
+	ShotAlive3 = true;
+	ShotAlive4 = true;
 	mAnmCnt = 0;
 	mCnt = 0;
 	SetTransColor(255, 0, 255);
@@ -330,44 +335,65 @@ void Enemy::Draw(void)
 	if (mEnemy1 == true)//ã‡îØ
 	{
 		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_1, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_1, mImage[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+
 	}
 	if (mEnemy2 == true)//èó
 	{
 		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_2, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_2, mImage2[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+
 	}
 	if (mEnemy3 == true)//çïêl
 	{
 		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_3, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_3, mImage3[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+	
 
 	}
 	if (mEnemy4 == true)//íÉîØ
 	{
 		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_4, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_4, mImage4[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+
 	}
 	//éÄÇÒÇæ-------------------------------------------------
 	if (mPush == true)
 	{
 		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_1, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_1, mDedImage[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		ShotAlive1 = false;
 	}
 	if (mPush2 == true)
 	{
 		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_2, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_2, mDedImage2[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		ShotAlive2 = false;
 	}
 	if (mPush3 == true)
 	{
 		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_3, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_3, mDedImage3[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		ShotAlive3 = false;
 	}
 	if (mPush4 == true)
 	{
 		DrawGraph(mPos.x_ - mSizeOffset.x_ + ENEMY_X_4, mPos.y_ - mSizeOffset.y_ + ENEMY_Y_4, mDedImage4[mMoveDir * DIR_MAX + ((mAnmCnt / 20) % 4)], true);
+		ShotAlive4 = false;
 	}
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "EnemyPos=(%d,%d)", mPos.x_, mPos.y_);
 
-	DrawGraph((mPos.x_ -mSizeOffset.x_ + ENEMY_X_1) + bulletPos_.x_, (mPos.y_ -mSizeOffset.y_ + ENEMY_Y_1), BulletID_[1], true);
-	DrawGraph((mPos.x_ -mSizeOffset.x_ + ENEMY_X_2) + bulletPos_.x_, (mPos.y_ -mSizeOffset.y_ + ENEMY_Y_2), BulletID_[2], true);
-	DrawGraph((mPos.x_ -mSizeOffset.x_ + ENEMY_X_3) + bulletPos_.x_, (mPos.y_ -mSizeOffset.y_ + ENEMY_Y_3), BulletID_[3], true);
-	DrawGraph((mPos.x_ -mSizeOffset.x_ + ENEMY_X_4) + bulletPos_.x_, (mPos.y_ -mSizeOffset.y_ + ENEMY_Y_4), BulletID_[4], true);
+	if (ShotAlive1)
+	{
+		DrawGraph((mPos.x_ - mSizeOffset.x_ + ENEMY_X_1) + bulletPos_.x_, (mPos.y_ - mSizeOffset.y_ + ENEMY_Y_1), BulletID_[1], true);
+	}
+	if (ShotAlive2)
+	{
+		DrawGraph((mPos.x_ - mSizeOffset.x_ + ENEMY_X_2) + bulletPos_.x_, (mPos.y_ - mSizeOffset.y_ + ENEMY_Y_2), BulletID_[2], true);
+	}
+	if (ShotAlive3)
+	{
+		DrawGraph((mPos.x_ - mSizeOffset.x_ + ENEMY_X_3) + bulletPos_.x_, (mPos.y_ - mSizeOffset.y_ + ENEMY_Y_3), BulletID_[3], true);
+	}
+	if (ShotAlive4)
+	{
+		DrawGraph((mPos.x_ - mSizeOffset.x_ + ENEMY_X_4) + bulletPos_.x_, (mPos.y_ - mSizeOffset.y_ + ENEMY_Y_4), BulletID_[4], true);
 
+	}
+	
 	/*DrawGraph(( - mSizeOffset.x_ + ENEMY_X_1), ( - mSizeOffset.y_ + ENEMY_Y_1) + bulletPos_[0].y_, BulletID_[1], true);
 	DrawGraph(( - mSizeOffset.x_ + ENEMY_X_2) + bulletPos_[1].x_, ( - mSizeOffset.y_ + ENEMY_Y_2), BulletID_[2], true);
 	DrawGraph(( - mSizeOffset.x_ + ENEMY_X_3) + bulletPos_[2].x_, ( - mSizeOffset.y_ + ENEMY_Y_3), BulletID_[3], true);
@@ -402,6 +428,11 @@ bool Enemy::IsAlive(void)
 	return false;
 }
 
+
+int Enemy::GetLif(void)
+{
+	return mLife;
+}
 
 Vector2 Enemy::GetPos(void)
 {

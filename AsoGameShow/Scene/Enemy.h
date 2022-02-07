@@ -63,7 +63,7 @@ public:
 //
 	void IsDestry(void);
 
-
+	int GetLif(void);
 	Vector2 GetPos(void);
 	Vector2 GetSize(void);
 	Vector2 GetShotPos(void);
@@ -77,6 +77,11 @@ public:
 	bool mEnemy2;
 	bool mEnemy3;
 	bool mEnemy4;
+
+	bool ShotAlive1;
+	bool ShotAlive2;
+	bool ShotAlive3;
+	bool ShotAlive4;
 
 	int mCnt;
 	int mCnt2;

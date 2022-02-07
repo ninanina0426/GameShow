@@ -1,6 +1,8 @@
 #include <DxLib.h>
 #include "common/Vector2.h"
 #include "GameScene.h"
+#include "EndScene.h"
+#include "Transition/CrossOver.h"
 
 
 
@@ -150,10 +152,7 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
 
         }
     }
-    if (CheckSoundFile() != 1)
-    {
-        printf("‚È‚Á‚Ä‚È‚¢‚æ\n");
-    }
+
 
     if (mIsChat == true)
     {
@@ -165,7 +164,11 @@ uniquBaseScn GameScene::Update( uniquBaseScn own)
         }
     }
 
-
+    if (mEnemy.GetLif() == 0)
+    {
+        return std::make_unique<CrossOver>(std::move(own), std::make_unique<EndScene>("end_2"));
+    }
+    
     DrawOwnScn();
 
     return std::move(own);
@@ -189,10 +192,7 @@ void GameScene::DrawOwnScn()
     mPlayer.Draw(mMapOffset);
 
     DrawGraph(0, 0, bg_, true);
-    if (mIsChat == true)
-    {
-        mChat.Draw();
-    }
+   
    
 
     SetDrawScreen(sceneScrID_);
@@ -201,7 +201,10 @@ void GameScene::DrawOwnScn()
     DrawBox(0, 0, 1080, 800, 0xffffff, true);
     DrawGraph(90, 10, gameScene_, true);
    
-    
+    if (mIsChat == true)
+    {
+        mChat.Draw();
+    }
     
 }
 

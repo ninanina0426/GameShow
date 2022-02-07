@@ -61,7 +61,7 @@ bool Chat::Update(void)
 
 void Chat::Draw(void)
 {
-	DrawGraph(0, 0, mImage[x], true);
+	DrawGraph(80, 150, mImage[x], true);
 }
 
 bool Chat::Release(void)
