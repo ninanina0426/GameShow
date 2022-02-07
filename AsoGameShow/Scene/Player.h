@@ -1,5 +1,5 @@
 #pragma once
-#include"Vector2d.h"
+#include "common/Vector2.h"
 #include "GameCommon.h"
 class GameScene;
 
@@ -19,27 +19,30 @@ private:
 	int mLifeMax;		//キャラクターの最大体力値
 
 	DIR mMoveDir;		//キャラクターの向き
-	Vector2d mPos;		//キャラクターの地図上の座標
-	Vector2d mSizeOffset;//キャラクターのオフセットサイズ　　半分の値
-	Vector2d mSize;		//キャラクター画像のサイズ
+	Vector2 mPos;		//キャラクターの地図上の座標
+	Vector2 mSizeOffset;//キャラクターのオフセットサイズ　　半分の値
+	Vector2 mSize;		//キャラクター画像のサイズ
 	int mMoveSpeed;		//キャラクター移動スピード
 	int mAnmCnt;		//キャラクターのアニメーション
 
+	
 	int mCnt;
 	//
 	int mDCnt;
-	Vector2d mDorPos;
+	Vector2 mDorPos;
 	bool mDor;
 public:
 	int mPosBottom;	//キャラクターの足元のY座標
 
 	bool init(GameScene* parent);		//初期化
-	Vector2d Update(void);		//更新
-	void Draw(Vector2d offset);		//描画
+	Vector2 Update(void);		//更新
+	void Draw(Vector2 offset);		//描画
 	bool Release(void);		//開放
 	bool IsAlive(void);
-	void SetPos(Vector2d pos);
-	Vector2d GetSiz(void);
+	void SetPos(Vector2 pos);
+	Vector2 GetSiz(void);
 	DIR GetDIR(void);
+
+	Vector2 GetPlayerPos(void);
 };
 

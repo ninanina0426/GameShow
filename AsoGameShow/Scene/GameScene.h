@@ -6,8 +6,7 @@
 #include"Stage.h"
 #include"Chat.h"
 #include "BaseScene.h"
-#include"Vector2d.h"
-#include "../tmx/TmxObj.h"
+
 
 
 
@@ -29,7 +28,7 @@ public:
     bool IsEPush4(void);
 
     //チップ座標を受け取りマップチップ番号を返す
-    int GetEvent(Vector2d pos);
+    int GetEvent(Vector2 pos);
    
 private:
     uniquBaseScn Update( uniquBaseScn own) override;
@@ -40,14 +39,23 @@ private:
     Player mPlayer;
     Enemy mEnemy;
     Stage  mStage;
+<<<<<<< HEAD
     Chat mChat;
     /*std::list<std::unique_ptr<Obj>> objList_;*/
+=======
+>>>>>>> 0b2f29a0d7c9b31a6fd6ae28b7a1d2717b3f43b4
     int gameScene_;
-    Vector2d mMapOffset;
+    Vector2 mMapOffset;
     int bg_;
+<<<<<<< HEAD
     int BGM_;
     TmxObj tmxobj_;
     //chat
     bool mIsChat;
+=======
+
+
+    
+>>>>>>> 0b2f29a0d7c9b31a6fd6ae28b7a1d2717b3f43b4
 };
 

@@ -1,6 +1,7 @@
 #include <DxLib.h>
 #include "PrologueScene.h"
 #include "Transition/CrossOver.h"
+#include "Transition/FadeInOut.h"
 #include "EndScene.h"
 #include "GameScene.h"
 
@@ -19,11 +20,15 @@ uniquBaseScn PrologueScene::Update(uniquBaseScn own)
 {
 	if (name_=="normal")
 	{
-		return std::make_unique<CrossOver>(std::move(own), std::make_unique<GameScene>());
+		return std::make_unique<FadeInOut>(std::move(own), std::make_unique<GameScene>());
 	}
 	else if(name_=="end_1")
 	{
 		return std::make_unique<CrossOver>(std::move(own), std::make_unique<EndScene>(name_));
+	}
+	if (CheckHitKey(KEY_INPUT_N))
+	{
+		return std::make_unique<CrossOver>(std::move(own), std::make_unique<GameScene>());
 	}
 	DrawOwnScn();//ŒÂ•Ê‚ÌDrawˆ—‚Èˆ×•K‚¸‘‚­
 	count++;
@@ -39,7 +44,7 @@ void PrologueScene::DrawOwnScn()
 	{
 		ChatDrow("1");
 	}
-
+	DrawFormatString(720, 630, 0xffffff, "skip N");
 	
 }
 
@@ -85,9 +90,12 @@ void PrologueScene::ChatDrow(std::string name)
 		{
 			DrawGraph(120, 20 + (Downsize_.y_ * 3), chatBox_, true);
 			DrawFormatString(160, 50 + (Downsize_.y_ * 3), 0xffffff, "Thank you! Good luck!!");
+			
+		}
+		if (cuntspeed_>=5)
+		{
 			name_ = "normal";
 		}
-
 	}
 	else if (Flag_ && pos_.x_ == boxpos_.x_ + 150)
 	{
